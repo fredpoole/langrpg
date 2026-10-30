@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3]
+
+[ext_resource type="Script" path="res://scripts/main.gd" id="1_main"]
+[ext_resource type="Script" path="res://scripts/world.gd" id="2_world"]
+[ext_resource type="PackedScene" path="res://scenes/player.tscn" id="3_player"]
+[ext_resource type="PackedScene" path="res://scenes/dialogue_box.tscn" id="4_dialogue"]
+
+[node name="Main" type="Node2D"]
+script = ExtResource("1_main")
+
+[node name="World" type="Node2D" parent="."]
+script = ExtResource("2_world")
+
+[node name="Player" parent="." instance=ExtResource("3_player")]
+
+[node name="Camera" type="Camera2D" parent="."]
+
+[node name="HUD" type="CanvasLayer" parent="."]
+
+[node name="Bar" type="ColorRect" parent="HUD"]
+offset_right = 256.0
+offset_bottom = 16.0
+color = Color(0, 0, 0, 1)
+
+[node name="AreaLabel" type="Label" parent="HUD"]
+offset_left = 4.0
+offset_right = 252.0
+offset_bottom = 16.0
+theme_override_font_sizes/font_size = 8
+vertical_alignment = 1
+
+[node name="DialogueBox" parent="." instance=ExtResource("4_dialogue")]
